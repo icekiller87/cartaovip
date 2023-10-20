@@ -1,0 +1,419 @@
+@font-face {
+    font-family: 'Gotham';
+    src: url('fontes/Gotham') format('opentype');
+    src: url('https://fonts.google.com/specimen/Source+Sans+3?query=source') format(none)
+    /* Outros formatos de fonte, como woff2, podem ser adicionados aqui */
+}
+
+.container-contato {
+    position: relative;
+    display: inline-block;
+}
+
+.Contato_home {
+    font-family: 'Gotham-Book.otf', sans-serif;
+    color: #141414;
+    font-size: 22px; /* Tamanho da fonte para dispositivos grandes */
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    left: 310px; /* Ajusta a posição horizontal para a direita */
+    top: -1px; /* Ajusta a posição vertical para cima */ /* Largura máxima de 100% */
+    box-sizing: border-box; /* Para incluir padding e borda na largura total */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    text-decoration: none;
+}
+
+.linha-isolada-1 {
+    content: "";
+    display: block;
+    border-bottom: 2px solid #000;
+    position: absolute;
+    right: 840px;
+    bottom: 89%; /* Ajuste para o meio da página */
+    width: 49%; /* Ajuste para a largura desejada da linha */
+    height: 0px;
+    margin-left: 0;
+}
+
+/* Estilos para a classe .crias */
+.crias {
+    width: 166.25px;
+    height: 0px;
+    background: #141414;
+    position: absolute;
+    top: 38px;
+    left: 685px;
+}
+
+/* Estilos para a imagem dentro do elemento .crias */
+.crias img {
+    width: 100%;
+    height: auto;
+}
+
+
+
+.login_icon {
+    width: 630px;
+    height: 630px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    position: absolute;
+    right: -200px; /* Ajusta a posição horizontal à direita */
+    top: 120px; /* Posição vertical para baixo */
+    overflow: hidden; /* Esconde as bordas da sombra */
+}
+
+.login_icon img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    box-shadow: 0px 0px 90px 30px rgba(131, 131, 131, 0.50);
+}
+
+.container-sobre {
+    position: relative;
+    display: inline-block;
+}
+
+.sobre_home {
+    font-family: 'Gotham-Book.otf', sans-serif;
+    color: #141414;
+    font-size: 22px; /* Tamanho da fonte para dispositivos grandes */
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    left: 1140px; /* Ajusta a posição horizontal para a direita */
+    top: -1px; /* Ajusta a posição vertical para cima */ /* Largura máxima de 100% */
+    box-sizing: border-box; /* Para incluir padding e borda na largura total */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    text-decoration: none;
+    display: block;
+}
+
+.linha-isolada-2 {
+    content: "";
+    display: block;
+    border-bottom: 2px solid #000;
+    position: absolute;
+    right: -78px;
+    bottom: 89%; /* Ajuste para o meio da página */
+    width: 49%; /* Ajuste para a largura desejada da linha */
+    height: 0px;
+    margin-left: 0;
+}
+
+.cria_h1 {
+    position: absolute;
+    width: 40;
+    height: 400;
+    font-family: 'Gotham-Black.otf', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 88px;
+    color: #F7B32B;
+    left: 57px; /* Ajusta a posição horizontal para a direita */
+    top: 80px;
+}
+
+.p_cria {
+    position: absolute;
+    width: 680px;
+    height: 140px;
+    font-family: 'Source Sans 3';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    color: #141414;
+    left: 61px; /* Ajusta a posição horizontal para a direita */
+    top: 198px;
+}
+
+.linha-isolada-3 {
+    content: "";
+    display: block;
+    border-bottom: 2px solid #000;
+    position: absolute;
+    left: 60px;
+    bottom: 41.80%; /* Ajuste para o meio da página */
+    width: 100px; /* Ajuste para a largura desejada da linha */
+    height: 0px;
+    margin-left: 0;
+}
+
+.form_txt {
+    position: absolute;
+    width: 900px;
+    height: 43px;
+    font-family: 'Source Sans 3';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18.63px;
+    line-height: 42px;
+    color: #141414;
+    left: 165px; /* Ajusta a posição horizontal para a direita */
+    top: 380px;
+}
+
+.linha-isolada-4 {
+    content: "";
+    display: block;
+    border-bottom: 2px solid #000;
+    position: absolute;
+    right: 772px;
+    bottom: 41.80%; /* Ajuste para o meio da página */
+    width: 100px; /* Ajuste para a largura desejada da linha */
+    height: 0px;
+    margin-left: 0;
+}
+
+.login_home {
+    font-family: 'Source Sans 3';
+    color: #141414;
+    font-size: 22px; /* Tamanho da fonte para dispositivos grandes */
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    left: 300px; /* Ajusta a posição horizontal para a direita */
+    top: 457px; /* Ajusta a posição vertical para cima */
+    box-sizing: border-box; /* Para incluir padding e borda na largura total */
+    background: transparent;
+    border: 2px solid #000; /* Adiciona uma borda preta de 2px */
+    border-radius: 8px; /* Bordas levemente arredondadas */
+    padding: 15px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.crias_1 {
+    width: 114.7px;
+    height: 114.7px;
+    background: url('images/crias_1.png'), lightgray 50%;
+    border-radius: 50%; /* Valor ajustado para ser metade da largura/altura */
+    border: 0 solid #FFF;
+    position: absolute;
+    top: 537px;
+    left: 173px;
+}
+
+.crias_2 {
+    width: 114.7px;
+    height: 114.7px;
+    background: url('images/crias_2.png'), lightgray 50%;
+    border-radius: 50%; /* Valor ajustado para ser metade da largura/altura */
+    border: 0 solid #FFF;
+    position: absolute;
+    top: 537px;
+    left: 253px;
+}
+
+.crias_3 {
+    width: 114.7px;
+    height: 114.7px;
+    background: url('images/crias_3.png'), lightgray 50%;
+    border-radius: 50%; /* Valor ajustado para ser metade da largura/altura */
+    border: 0 solid #FFF;
+    position: absolute;
+    top: 537px;
+    left: 343px;
+}
+
+.crias_4 {
+    width: 114.7px;
+    height: 114.7px;
+    background: url('images/crias_4.png'), lightgray 50%;
+    border-radius: 50%; /* Valor ajustado para ser metade da largura/altura */
+    border: 0 solid #FFF;
+    position: absolute;
+    top: 537px;
+    left: 433px;
+}
+
+.crias_5 {
+    width: 114.7px;
+    height: 114.7px;
+    background: url('images/crias_5.png'), lightgray 50%;
+    border-radius: 50%; /* Valor ajustado para ser metade da largura/altura */
+    border: 0 solid #FFF;
+    position: absolute;
+    top: 537px;
+    left: 523px;
+}
+
+.mil {
+    position: absolute;
+    width: 513px;
+    height: 38px;
+    font-family: 'Source Sans 3';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 38px;
+    color: #141414;
+    left: 253px; /* Ajusta a posição horizontal para a direita */
+    top: 618px;
+}
+
+.aprov {
+    position: absolute;
+    width: 137px;
+    height: 29px;
+    text-align: center;
+    font-family: 'Gotham-Book.otf';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 29px;
+    color: #141414;
+    left: 321px; /* Ajusta a posição horizontal para a direita */
+    top: 663px;
+    letter-spacing: 0.102px;
+    text-transform: capitalize;
+}
+
+.poze {
+    width: 1px; /* Defina a largura desejada */
+    height: 1px; /* Defina a altura desejada */
+    position: absolute; /* Use "position: absolute;" para posicionar o elemento */
+    bottom: 727px;
+    right: 47%; /* Defina "right" para 0 para alinhar o elemento no canto direito */
+    background: url('images/poze-png-2.png'), lightgray;
+    background-size: 1px; /* Defina o tamanho desejado da imagem de fundo (1px de largura e altura) */
+    background-repeat: no-repeat;
+    background-position: center; /* Centralize a imagem de fundo */
+}
+
+.login {
+    position: absolute;
+    width: 144px;
+    height: 55px;
+    font-family: 'Gotham-Black.otf', sans-serif;
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 55.25px;
+    color: #F7B32B;
+    left: 57px; /* Ajusta a posição horizontal para a direita */
+    top: 80px;
+}
+
+
+
+
+
+#caixa-invisivel {
+    width: 600px;
+    height: 580px;
+    padding-right: 87px;
+    flex-shrink: 0;
+    background: transparent;
+    opacity: 10%;
+    position: absolute;
+    left: 60px;
+    top: 135px;
+   
+
+}
+/* Estilos para telas menores que 1024x768 */
+@media screen and (max-width: 1024px) {
+    body {
+        font-size: 14px; /* Tamanho de fonte menor */
+    }
+
+    .crias {
+        display: none; /* Esconde a imagem das crias em telas menores */
+    }
+
+    .container-contato,
+    .container-sobre,
+    .container-login {
+        text-align: center; /* Centraliza os botões em telas menores */
+        margin-top: 20px; /* Espaçamento superior para os botões */
+    }
+
+    .Contato_home,
+    .sobre_home,
+    .cria_h1,
+    .p_cria,
+    .login_home,
+    .mil,
+    .aprov {
+        position: static; /* Remove a posição absoluta para reorganizar o texto */
+        left: auto; /* Remove a posição horizontal ajustada */
+        top: auto; /* Remove a posição vertical ajustada */
+        font-size: 18px; /* Tamanho de fonte menor em telas menores */
+    }
+
+    .linha-isolada-1,
+    .linha-isolada-2,
+    .linha-isolada-3,
+    .linha-isolada-4 {
+        display: none; /* Esconde as linhas isoladas em telas menores */
+    }
+}
+
+/* Estilos para telas maiores que 1024x768 */
+@media screen and (min-width: 1024px) {
+    .crias {
+        display: block; /* Exibe a imagem das crias em telas maiores */
+    }
+
+    /* Ajuste as posições horizontais e verticais conforme necessário para telas maiores */
+    
+    .Contato_home {
+        left: 310px;
+        top: -1px;
+    }
+
+    .sobre_home {
+        left: 1140px;
+        top: -1px;
+    }
+
+    .cria_h1 {
+        left: 57px;
+        top: 80px;
+    }
+
+    .p_cria {
+        left: 61px;
+        top: 198px;
+    }
+
+    .login_home {
+        left: 300px;
+        top: 457px;
+    }
+
+    .mil {
+        left: 253px;
+        top: 618px;
+    }
+
+    .aprov {
+        left: 321px;
+        top: 663px;
+    }
+
+    /* Ajuste as larguras conforme necessário para telas maiores */
+
+    .linha-isolada-1,
+    .linha-isolada-2,
+    .linha-isolada-3,
+    .linha-isolada-4 {
+        width: 49%;
+    }
+}

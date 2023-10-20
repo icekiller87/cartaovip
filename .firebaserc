@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "cartaovip": "authentication-96efe",
+    "default": "authentication-96efe"
+  },
+  "targets": {},
+  "etags": {}
+}

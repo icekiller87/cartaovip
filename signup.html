@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="br"><head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login</title>
+        <link rel="icon" type="image/png" href="images/crias-2.png"> <!-- Link para o ícone da guia do navegador -->
+        <link rel="stylesheet" type="text/css" href="cssFile.css"> <!-- Link para o arquivo CSS -->
+    </head>
+    
+    <body>
+    <form class="Formvalidate" id="Form">
+<main class="container2">
+    <span class="criar_conta">
+    Criar conta:
+    </span>
+    <div class="name_erro_popup" data-validate="E necessário um nome válido">
+    <input class="criar_name" type="text" id="username" name="name" placeholder="Nome">
+    <span class="focus"></span>
+    <span class="symbol">
+    <i class="symbol-name" aria-hidden="true"></i>
+    </span>
+    </div>
+    <div class="cria_email_error" data-validate="Necessário um email válido: ex@abc.xyz">
+    <input class="cria_email" type="text" id="email" name="email" placeholder="E-mail">
+    <span class="focus"></span>
+    <span class="symbol">
+    <i class="symbol_criar_email" aria-hidden="true"></i>
+    </span>
+    </div>
+    <div class="criar_pass_error" data-validate="Necessário uma senha válida">
+    <input class="criar_password" type="password" id="password" name="senha" placeholder="Senha">
+    <span class="focus"></span>
+    <span class="symbol">
+    <i class="symbol_criar_pass" aria-hidden="true"></i>
+    </span>
+    </div>
+    <div class="criar-form-btn">
+    <button class="criar-form-button" id="criar" type="button">
+    Criar
+    </button>
+    </div>
+    <a class="txt2" id="index"href="index.html">
+    Ja tem conta?
+    </a>
+    </div>
+    <div class="text-center p-t-136">
+    <a class="txt2" id="signup" href="signup.html">
+    Precisa de ajuda?
+    <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+    </a>
+    </div>
+</main>
+    </form>
+    </div>
+    </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, fetchSignInMethodsForEmail } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBnOWQAe0tMFlMGn80Lhaue6HEBG1xwpQU",
+            authDomain: "authentication-96efe.firebaseapp.com",
+            databaseURL: "https://authentication-96efe-default-rtdb.firebaseio.com",
+            projectId: "authentication-96efe",
+            storageBucket: "authentication-96efe.appspot.com",
+            messagingSenderId: "594458889142",
+            appId: "1:594458889142:web:901ace0ef37438163a8f17"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth();
+        const googleProvider = new GoogleAuthProvider();
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const criarButton = document.getElementById('criar'); // Botão de criar conta
+    const googleSignupButton = document.getElementById('google-signup');
+    const loginButton = document.getElementById('esqueci'); // Botão para redirecionar para a página de login
+    const usernameField = document.getElementById('username'); // Campo de nome
+    const emailField = document.getElementById('email'); // Campo de e-mail
+    const passwordField = document.getElementById('password'); // Campo de senha
+
+    function createAccount() {
+        var username = usernameField.value;
+        var email = emailField.value;
+        var password = passwordField.value;
+
+        // Verificar se todas as caixas do formulário estão preenchidas
+        if (!username || !email || !password) {
+            alert('Por favor, preencha todos os campos do formulário.');
+            return;
+        }
+
+        // Verificar se o e-mail já existe
+        fetchSignInMethodsForEmail(auth, email)
+            .then((signInMethods) => {
+                if (signInMethods.length > 0) {
+                    alert('E-mail já existe.');
+                } else {
+                    // Criar a conta se o e-mail não existir
+                    createUserWithEmailAndPassword(auth, email, password)
+                        .then((userCredential) => {
+                            const user = userCredential.user;
+
+                            set(ref(database, 'users/' + user.uid), {
+                                username: username,
+                                email: email
+                            });
+
+                            alert('Conta criada com sucesso!');
+                        })
+                        .catch((error) => {
+                            const errorMessage = error.message;
+                            alert(errorMessage);
+                        });
+                }
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                alert(errorMessage);
+            });
+    }
+
+    criarButton.addEventListener('click', createAccount);
+
+    googleSignupButton.addEventListener('click', (e) => {
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                // Você pode acessar as informações do usuário em result.user
+                alert('Logado com o Google!');
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                alert(errorMessage);
+            });
+    });
+
+    // Event Listener para redirecionar para a página de login quando o botão "Ja tem conta?" for clicado
+    loginButton.addEventListener('click', () => {
+        window.location.href = 'login.html'; // Redirecionar para a página de login
+    });
+
+    // Adicionar funcionalidade para pressionar "Enter" em qualquer um dos campos
+    usernameField.addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            createAccount();
+        }
+    });
+
+    emailField.addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            createAccount();
+        }
+    });
+
+    passwordField.addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            createAccount();
+        }
+    });
+});
+
+
+    </script>
+</body>
+</html>

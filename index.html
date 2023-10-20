@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="images/crias-2.png"> <!-- Link para o ícone da guia do navegador -->
+    <link rel="stylesheet" type="text/css" href="cssFile.css"> <!-- Link para o arquivo CSS -->
+</head>
+
+<body>
+
+    <form class="Formvalidate"> 
+    <main class="container">
+        <span class="login">
+        <h1>Login:</h1>
+        </span>
+        <span>Email ou Usuário</span>
+        <div class="email_erro_Popup" data-validate="Necessário email válido: exe@abc.com">
+            <input class="email" type="text" id="email" name="email" placeholder="Cria de castelo">
+            <span class="symbol">
+                <i class="symbol-email" aria-hidden="true"></i>
+            </span>
+        </div>
+        <span>Senha</span>
+        <div class="password_erro_Popup" data-validate="Necessário senha válida: exe...">
+            <input class="password" type="password" id="password" name="pass" placeholder="Senha">
+            <span class="symbol">
+                <i class="symbol-pass" aria-hidden="true"></i>
+            </span>
+        </div>
+
+        <div class="entrar-form-btn">
+            <button class="entrar-form-button" id="entrar" type="button">
+                Login
+            </button>
+        </div>
+
+        <div class="lembrar_login">
+            <button class="lembrar" id="lembrar" type="button">
+                Lembrar de mim
+            </button>
+        </div>
+
+        <div class="text-center p-t-12">
+            <a class="txt2" id="esqueci" href="esqueci.html">
+                Esqueceu a senha?
+            </a>
+        </div>
+
+        <span class="txt3">
+            Não tem uma conta?
+        </span>
+    
+        <div class="text-center p-t-136">
+            <a class="txt2" id="signup" href="signup.html">
+             Cadastre-se
+            <i class="signupButton" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <span>OU</span>
+
+        <div class="google-login-btn">
+            <img class="google-logo" src="images/google-logo.png" alt="">
+            <button class="google-login" id="google-login" type="button">
+                Continue com Google
+            </button>
+        </div>
+
+        <div class="facebook-login-btn">
+            <img class="facebook-logo" src="images/Facebook.png" alt="">
+            <button class="facebook-login" id="facebook-login" type="button">
+                Continue com Facebook
+            </button>
+        </div>
+
+    </main>
+
+    </form>
+    
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+            import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+            import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+    
+            const firebaseConfig = {
+                        apiKey: "AIzaSyBnOWQAe0tMFlMGn80Lhaue6HEBG1xwpQU",
+                        authDomain: "authentication-96efe.firebaseapp.com",
+                        databaseURL: "https://authentication-96efe-default-rtdb.firebaseio.com",
+                        projectId: "authentication-96efe",
+                        storageBucket: "authentication-96efe.appspot.com",
+                        messagingSenderId: "594458889142",
+                        appId: "1:594458889142:web:901ace0ef37438163a8f17"
+                    };
+    
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const database = getDatabase(app);
+            const auth = getAuth();
+            const googleProvider = new GoogleAuthProvider();
+            const facebookprovider = new FacebookAuthProvider();
+    
+            document.addEventListener('DOMContentLoaded', () => {
+            const entrarButton = document.getElementById('entrar'); // Botão de entrar
+            const googleLoginButton = document.getElementById('google-login'); // Botão para criar conta com google
+            const facebookLoginbutton = document.getElementById('facebook-login');
+            const signupButton = document.getElementById('signup'); // Botão para criar conta
+            const emailField = document.getElementById('email'); // Campo de e-mail
+            const passwordField = document.getElementById('password'); // Campo de senha
+
+            // Função para fazer login
+            function loginUser(email, password) {
+                return signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+
+                        const dt = new Date();
+                        update(ref(database, 'users/' + user.uid), {
+                            last_login: dt,
+                        });
+
+                        alert('Usuário logado!');
+                    })
+                    .catch((error) => {
+                        const errorMessage = error.message;
+                        alert(errorMessage);
+                    });
+            }
+
+            // Event Listener para fazer login quando o botão "Entrar" for clicado
+            entrarButton.addEventListener('click', () => {
+                var email = emailField.value;
+                var password = passwordField.value;
+
+                loginUser(email, password);
+            });
+
+            // Event Listener para fazer login com o Google quando o botão "Login com Google" for clicado
+            googleLoginButton.addEventListener('click', (e) => {
+                signInWithPopup(auth, googleProvider)
+                    .then((result) => {
+                        // Você pode acessar as informações do usuário em result.user
+                        alert('Logado com o Google!');
+                    })
+                    .catch((error) => {
+                        const errorMessage = error.message;
+                        alert(errorMessage);
+                    });
+            });
+
+          // Event Listener para fazer login com o Facebook quando o botão "Login com Facebook" for clicado
+          facebookLoginbutton.addEventListener('click', (e) => {
+    signInWithPopup(auth, facebookprovider) // Usar facebookprovider, não facebook-provider
+        .then((result) => {
+            // Você pode acessar as informações do usuário em result.user
+            alert('Logado com o Facebook!');
+        })
+        .catch((error) => {
+            const errorMessage = error.message;
+            alert(errorMessage);
+        });
+});
+
+
+
+            // Event Listener para redirecionar para a página de criar conta quando o botão "Criar conta" for clicado
+            signupButton.addEventListener('click', () => {
+                window.location.href = 'signup.html'; // Redirecionar para a página de criar conta
+            });
+
+            // Event Listener para verificar a tecla "Enter" no campo de email e realizar o login
+            emailField.addEventListener('keyup', (event) => {
+                if (event.key === 'Enter') {
+                    var email = emailField.value;
+                    var password = passwordField.value;
+
+                    loginUser(email, password);
+                }
+            });
+
+                // Event Listener para verificar a tecla "Enter" no campo de senha e realizar o login
+                passwordField.addEventListener('keyup', (event) => {
+                    if (event.key === 'Enter') {
+                        var email = emailField.value;
+                        var password = passwordField.value;
+
+                        loginUser(email, password);
+                    }
+                });
+            });
+
+        </script>
+    </body>
+</html>
